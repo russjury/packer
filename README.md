@@ -11,3 +11,5 @@ You can deploy a VM using the image packer just build like this (for QEMU/KVM):
 # virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant rhel7 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --import --disk /vm/directory/$HOSTNAME.qcow2 --name $HOSTNAME
 ```
 **NOTE:** This does not set the hostname inside the VM, and it relies on DHCP -- general okay if you're using Ansible, etc to configure the VM from this point on.
+
+Also notice that the Packer JSON config doesn't rely on a completely insecure SSH user that you have to remember to remove.  We use Kickstart to configure the VM instead of Packer SSH communicators, which I feel is far superior in this case.
