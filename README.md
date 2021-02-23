@@ -12,4 +12,4 @@ You can deploy a VM using the image packer just build like this (for QEMU/KVM):
 ```
 **NOTE:** This does not set the hostname inside the VM, and it relies on DHCP -- general okay if you're using Ansible, etc to configure the VM from this point on.
 
-Also notice that the Packer JSON config doesn't rely on a completely insecure SSH user that you have to remember to remove.  We use Kickstart to configure the VM instead of Packer SSH communicators, which I feel is far superior in this case.
+Also notice that the Packer JSON config doesn't rely on an SSH user that you have to remember to remove.  Kickstart is used to configure the VM instead of Packer SSH communicators.
