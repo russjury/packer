@@ -1,6 +1,10 @@
 # Create VM image (QCOW2 for QEMU/KVM) using Packer
 The examples here will create a qcow2 image for use with QEMU/KVM virtualization using [Hashicorp's Packer](https://www.packer.io/).  They start with a minimal CentOS7 ISO and a kickstart file.  All that's needed for Packer is the QEMU libs/binaries -- it runs everything itself, so you don't have to actually be running libvirtd (handy for a build server or other CI/CD), and runs headless, meaning everything here can be run from command-line or scripts/automation.
 
+To build an image, just:
+```
+# ./packer build nossh.json
+```
 
 Pieces missing from this repo are the [CentOS7 minimal ISO](https://www.centos.org/download/), and the [packer binary](https://www.packer.io/downloads).  Note that Packer starts up its own webserver even, so all you have to do is put the kickstart file where Packer can find it (/packer/http in my case).
 
