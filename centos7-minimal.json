@@ -1,0 +1,29 @@
+{
+  "builders": [
+    {
+      "type": "qemu",
+      "iso_url": "file:///e/ISOs/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_checksum": "none",
+      "disk_size": "40960M",
+      "disk_interface": "virtio",
+      "disk_cache": "none",
+      "disk_detect_zeroes": "on",
+      "format": "qcow2",
+      "cpus": "1",
+      "memory": "2048",
+      "accelerator": "kvm",
+      "headless": true,
+      "machine_type": "q35",
+      "net_device": "virtio-net",
+      "net_bridge": "br0",
+      "output_directory": "/e/packer/packer-centos7",
+      "http_directory": "/e/packer/http",
+      "communicator": "none",
+      "shutdown_timeout": "30m",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7-ks.cfg<enter><wait>"
+      ]
+    }
+  ]
+}
+

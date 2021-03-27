@@ -2,7 +2,7 @@
   "builders": [
     {
       "type": "qemu",
-      "iso_url": "file:///packer/CentOS-7-x86_64-Minimal-1908.iso",
+      "iso_url": "file:///e/ISOs/CentOS-8.3.2011-x86_64-dvd1.iso",
       "iso_checksum": "none",
       "disk_size": "40960M",
       "disk_interface": "virtio",
@@ -16,13 +16,14 @@
       "machine_type": "q35",
       "net_device": "virtio-net",
       "net_bridge": "br0",
-      "output_directory": "/packer/newdir",
-      "http_directory": "/packer/http",
+      "output_directory": "/e/packer/packer-centos8",
+      "http_directory": "/e/packer/http",
       "communicator": "none",
       "shutdown_timeout": "30m",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7-ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos8-ks.cfg<enter><wait>"
       ]
     }
   ]
 }
+
