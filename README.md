@@ -7,7 +7,7 @@ To build an image, just:
 ```
 or... 
 ```
-# ./packer build centos7-minimal.json
+# ./packer build centos8-minimal.json
 ```
 
 Pieces missing from this repo are the [CentOS7(minimal) or CentOS8(dvd1) ISO](https://www.centos.org/download/), and the [packer binary](https://www.packer.io/downloads).  Note that Packer starts up its own webserver even, so all you have to do is put the kickstart file where Packer can find it (/e/packer/http in my case).
@@ -15,8 +15,14 @@ Pieces missing from this repo are the [CentOS7(minimal) or CentOS8(dvd1) ISO](ht
 You can deploy a VM using the image packer just build like this (for QEMU/KVM):
 ```
 # HOSTNAME=myhost1
-# cp /e/packer/packer-qemu /e/VMs/$HOSTNAME.qcow2
-# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant rhel7 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --noautoconsole --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
+# cp /e/packer/centos7/packer-qemu /e/VMs/$HOSTNAME.qcow2
+# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos7.0 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --noautoconsole --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
+```
+or...
+```
+# HOSTNAME=myhost1
+# cp /e/packer/centos8/packer-qemu /e/VMs/$HOSTNAME.qcow2
+# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos8 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --noautoconsole --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
 ```
 **NOTE:** This does not set the hostname inside the VM, and it relies on DHCP -- general okay if you're using Ansible, etc to configure the VM from this point on.
 
