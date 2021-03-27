@@ -16,13 +16,13 @@ You can deploy a VM using the image packer just build like this (for QEMU/KVM):
 ```
 # HOSTNAME=myhost1
 # cp /e/packer/centos7/packer-qemu /e/VMs/$HOSTNAME.qcow2
-# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos7.0 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --noautoconsole --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
+# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos7.0 --network bridge=br0 --graphics none --noautoconsole --sound none --console pty,target.type=virtio --serial pty --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
 ```
 or...
 ```
 # HOSTNAME=myhost1
 # cp /e/packer/centos8/packer-qemu /e/VMs/$HOSTNAME.qcow2
-# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos8 --network bridge=br0 --graphics spice --noautoconsole --sound none --console pty,target.type=virtio --serial pty --noautoconsole --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
+# virt-install --vcpus=2 --memory=8192 --cpu host --machine q35 --os-variant centos8 --network bridge=br0 --graphics none --noautoconsole --sound none --console pty,target.type=virtio --serial pty --import --disk /e/VMs/$HOSTNAME.qcow2 --name $HOSTNAME
 ```
 **NOTE:** This does not set the hostname inside the VM, and it relies on DHCP -- general okay if you're using Ansible, etc to configure the VM from this point on.
 
