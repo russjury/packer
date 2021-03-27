@@ -16,7 +16,7 @@
       "machine_type": "q35",
       "net_device": "virtio-net",
       "net_bridge": "br0",
-      "output_directory": "/e/packer/packer-centos8",
+      "output_directory": "/e/packer/centos8",
       "http_directory": "/e/packer/http",
       "communicator": "none",
       "shutdown_timeout": "30m",
